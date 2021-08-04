@@ -9,4 +9,3 @@ band_name = city + " " + pet
 print(f"The name of your band is '{band_name}'")
 # 5. Make sure the input cursor shows on a new line, see the example at:
 #   https://band-name-generator-end.appbrewery.repl.run/
-7
