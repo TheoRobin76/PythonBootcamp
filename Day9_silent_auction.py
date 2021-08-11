@@ -24,10 +24,10 @@ bidders = []
 print(logo)
 auction = True
 while auction:
-    name = input("Please enter your name:\n")
-    bid = int(input("please enter your bid:\n$"))
+    name = input("Please enter your name: ")
+    bid = int(input("please enter your bid: $"))
     make_bid(name, bid)
-    more_bidders = input("Are there any other potential bidders?\ny/n: ").lower()
+    more_bidders = input("Are there any other potential bidders? y/n: ").lower()
     # this clears the console on replit.com, not in pycharm
     clear()
     # this obscures the previous bid from the current bidder in pycharm (I will find a better way)
