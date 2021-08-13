@@ -73,7 +73,7 @@ def blackjack():
             if twist == "y":
                 user_cards.append(deal_card())
             else:
-                break
+                keep_playing = False
 
     if user_score > 21:
         compare_score(user_score, computer_score)
