@@ -52,13 +52,13 @@ def compare_score(player_score, comp_score):
 
 def blackjack():
     global user_score, computer_score, user_cards, computer_cards
+    print(logo)
     user_cards = []
     computer_cards = []
-
     for i in range(2):
         user_cards.append(deal_card())
         computer_cards.append(deal_card())
-    print(logo)
+
     keep_playing = True
     while keep_playing:
         user_score = (calculate_score(user_cards))
