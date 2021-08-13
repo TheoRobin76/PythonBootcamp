@@ -68,7 +68,6 @@ def blackjack():
 
         if user_score == 0 or computer_score == 0 or user_score > 21:
             keep_playing = False
-
         else:
             twist = input("Would you like to draw another card? (y/n): ").lower()
             if twist == "y":
