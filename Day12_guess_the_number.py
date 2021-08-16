@@ -30,21 +30,26 @@ def guess_the_number():
 
     play = True
     while play:
-        guess = int(input("Please guess a number: "))
-        if lives == 1:
-            print(f"You ran out of lives! You have lost Guess the number.\nThe number was {number}.")
-            play = False
-        elif guess < number:
-            print("Too low!")
-            lives -= 1
-            print(f"Lives remaining: {lives}")
-        elif guess > number:
-            print("Too high!")
-            lives -= 1
-            print(f"Lives remaining: {lives}")
-        elif guess == number:
-            print(f"You guessed the number! The winning number was {number}.")
-            play = False
+        try:
+            guess = int(input("Please guess a number: "))
+            if lives == 1:
+                print(f"You ran out of lives! You have lost Guess the number.\nThe number was {number}.")
+                play = False
+            elif number > guess > 0:
+                print("Too low!")
+                lives -= 1
+                print(f"Lives remaining: {lives}")
+            elif number < guess <= 100:
+                print("Too high!")
+                lives -= 1
+                print(f"Lives remaining: {lives}")
+            elif guess == number:
+                print(f"You guessed the number! The winning number was {number}.")
+                play = False
+            else:
+                print("Please enter a number between 1 and 100")
+        except ValueError:
+            print("Please enter a number between 1 and 100")
 
 
 guess_the_number()
