@@ -47,9 +47,9 @@ def guess_the_number():
                 print(f"You guessed the number! The winning number was {number}.")
                 play = False
             else:
-                print("Please enter a number between 1 and 100")
+                print("Please enter a number between 1 and 100.")
         except ValueError:
-            print("Please enter a number between 1 and 100")
+            print("Please enter a number between 1 and 100.")
 
 
 guess_the_number()
