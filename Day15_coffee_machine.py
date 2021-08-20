@@ -1,0 +1,100 @@
+MENU = {
+    "espresso": {
+        "ingredients": {
+            "water": 50,
+            "coffee": 18,
+        },
+        "cost": 1.5,
+    },
+    "latte": {
+        "ingredients": {
+            "water": 200,
+            "milk": 150,
+            "coffee": 24,
+        },
+        "cost": 2.5,
+    },
+    "cappuccino": {
+        "ingredients": {
+            "water": 250,
+            "milk": 100,
+            "coffee": 24,
+        },
+        "cost": 3.0,
+    }
+}
+
+resources = {
+    "water": 300,
+    "milk": 200,
+    "coffee": 100,
+}
+
+
+def resource_subtraction(selection):
+    """ This function take the coffee selection as input and outputs the remaining resources"""
+    resources['water'] = resources['water'] - (MENU[selection]['ingredients'])['water']
+    if selection != 'espresso':
+        resources['milk'] = resources['milk'] - (MENU[selection]['ingredients'])['milk']
+    resources['coffee'] = resources['coffee'] - (MENU[selection]['ingredients'])['coffee']
+    return resources
+
+
+def resource_addition(selection):
+    """ This function take the coffee selection as input and adds the resources back if the drink can't be made"""
+    resources['water'] = resources['water'] + (MENU[selection]['ingredients'])['water']
+    if selection != 'espresso':
+        resources['milk'] = resources['milk'] + (MENU[selection]['ingredients'])['milk']
+    resources['coffee'] = resources['coffee'] + (MENU[selection]['ingredients'])['coffee']
+    return resources
+
+
+def money(selection):
+    """ This function takes the coffee selection and coins as input and outputs the change required"""
+    cost = (MENU[selection]["cost"])
+    print(f"A {selection} costs ${cost}0")
+    print("Please insert coins.")
+    valid_money = False
+    while not valid_money:
+        try:
+            quarters = int(input("how many quarters?: ")) * 0.25
+            dimes = int(input("how many dimes?: ")) * 0.10
+            nickles = int(input("how many nickles?: ")) * 0.05
+            pennies = int(input("how many pennies?: ")) * 0.01
+            total = quarters + dimes + nickles + pennies
+            change = round(total - cost, 2)
+            print(f"Here is ${change} in change.")
+            print(f"Here is your {selection}. Enjoy!")
+            valid_money = True
+        except ValueError:
+            print("Please enter a valid amount")
+
+
+money_in_machine = 0
+make_coffee = True
+while make_coffee:
+    choice = input("What would you like? (espresso/latte/cappuccino): ").lower()
+    if choice in ('espresso', 'latte', 'cappuccino'):
+        resource_subtraction(choice)
+        if resources['water'] < 0:
+            print("The coffee machine is out of water.")
+            resource_addition(choice)
+        elif resources['milk'] < 0:
+            print("The coffee machine is out of milk.")
+            resource_addition(choice)
+        elif resources['coffee'] < 0:
+            print("The coffee machine is out of coffee.")
+            resource_addition(choice)
+        else:
+            money(choice)
+            money_in_machine += (MENU[choice]["cost"])
+    elif choice == 'off':
+        make_coffee = False
+        print("The coffee machine is now off.")
+    elif choice == 'report':
+        print(f"Water: {resources['water']}ml\nMilk: {resources['milk']}ml\nCoffee: {resources['coffee']}g")
+        print(f"Money: ${money_in_machine}0")
+    else:
+        print("Please enter a valid selection")
+
+
