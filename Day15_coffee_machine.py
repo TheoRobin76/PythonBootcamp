@@ -49,6 +49,14 @@ def resource_addition(selection):
     return resources
 
 
+def refill():
+    """ This function refills the coffee machine with water, milk and coffee"""
+    resources['water'] = 300
+    resources['milk'] = 200
+    resources['coffee'] = 100
+    return resources
+
+
 def money(selection):
     """ This function takes the coffee selection and coins as input and outputs the change required"""
     cost = (MENU[selection]["cost"])
@@ -70,31 +78,38 @@ def money(selection):
             print("Please enter a valid amount")
 
 
-money_in_machine = 0
-make_coffee = True
-while make_coffee:
-    choice = input("What would you like? (espresso/latte/cappuccino): ").lower()
-    if choice in ('espresso', 'latte', 'cappuccino'):
-        resource_subtraction(choice)
-        if resources['water'] < 0:
-            print("The coffee machine is out of water.")
-            resource_addition(choice)
-        elif resources['milk'] < 0:
-            print("The coffee machine is out of milk.")
-            resource_addition(choice)
-        elif resources['coffee'] < 0:
-            print("The coffee machine is out of coffee.")
-            resource_addition(choice)
+def coffee_machine():
+    """ This function runs the previous functions, taking the coffee selection and money inputs and creates the
+    coffee if there are sufficient resources """
+    money_in_machine = 0
+    make_coffee = True
+    while make_coffee:
+        choice = input("What would you like? (espresso/latte/cappuccino): ").lower()
+        if choice in ('espresso', 'latte', 'cappuccino'):
+            resource_subtraction(choice)
+            if resources['water'] < 0:
+                print("The coffee machine is out of water.")
+                resource_addition(choice)
+            elif resources['milk'] < 0:
+                print("The coffee machine is out of milk.")
+                resource_addition(choice)
+            elif resources['coffee'] < 0:
+                print("The coffee machine is out of coffee.")
+                resource_addition(choice)
+            else:
+                money(choice)
+                money_in_machine += (MENU[choice]["cost"])
+        elif choice == 'off':
+            make_coffee = False
+            print("The coffee machine is now off.")
+        elif choice == 'report':
+            print(f"Water: {resources['water']}ml\nMilk: {resources['milk']}ml\nCoffee: {resources['coffee']}g")
+            print(f"Money: ${money_in_machine}0")
+        elif choice == 'refill':
+            print("The coffee machine has been refilled.")
+            refill()
         else:
-            money(choice)
-            money_in_machine += (MENU[choice]["cost"])
-    elif choice == 'off':
-        make_coffee = False
-        print("The coffee machine is now off.")
-    elif choice == 'report':
-        print(f"Water: {resources['water']}ml\nMilk: {resources['milk']}ml\nCoffee: {resources['coffee']}g")
-        print(f"Money: ${money_in_machine}0")
-    else:
-        print("Please enter a valid selection")
+            print("Please enter a valid selection")
 
 
+coffee_machine()
