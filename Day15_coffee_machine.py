@@ -42,7 +42,6 @@ def money(selection):
             total = quarters + dimes + nickles + pennies
             if cost > total:
                 print("You didn't insert enough money!")
-                valid_money = False
             else:
                 change = round(total - cost, 2)
                 print(f"Here is ${change} in change.")
