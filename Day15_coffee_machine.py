@@ -40,12 +40,16 @@ def money(selection):
             nickles = int(input("how many nickles?: ")) * 0.05
             pennies = int(input("how many pennies?: ")) * 0.01
             total = quarters + dimes + nickles + pennies
-            change = round(total - cost, 2)
-            print(f"Here is ${change} in change.")
-            print(f"Here is your {selection}. Enjoy!")
-            valid_money = True
+            if cost > total:
+                print("You didn't insert enough money!")
+                valid_money = False
+            else:
+                change = round(total - cost, 2)
+                print(f"Here is ${change} in change.")
+                print(f"Here is your {selection}. Enjoy!")
+                valid_money = True
         except ValueError:
-            print("Please enter a valid amount")
+            print("Please enter a valid amount.")
 
 
 def coffee_machine():
@@ -79,7 +83,7 @@ def coffee_machine():
             print("The coffee machine has been refilled.")
             refill()
         else:
-            print("Please enter a valid selection")
+            print("Please enter a valid selection.")
 
 
 coffee_machine()
