@@ -69,16 +69,16 @@ import colorgram
 #     tim.left(5)
 #
 # # Damien Hirst spot painting
-# rgb_colors = []
-# colors = colorgram.extract('image.jpg', 30)
-# for color in colors:
-#     r = color.rgb.r
-#     g = color.rgb.g
-#     b = color.rgb.b
-#     new_color = (r, g, b)
-#     rgb_colors.append(new_color)
-#
-# print(rgb_colors)
+rgb_colors = []
+colors = colorgram.extract('image.jpg', 30)
+for color in colors:
+    r = color.rgb.r
+    g = color.rgb.g
+    b = color.rgb.b
+    new_color = (r, g, b)
+    rgb_colors.append(new_color)
+
+print(rgb_colors)
 
 color_list = [(201, 164, 112), (152, 75, 50), (221, 201, 138), (57, 95, 126),
               (170, 152, 44), (138, 31, 20), (135, 163, 183), (196, 94, 75),
