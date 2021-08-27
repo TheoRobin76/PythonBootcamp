@@ -6,37 +6,37 @@ screen1 = Screen()
 
 
 # Etch a Sketch
-
-def move_forwards():
-    tim.forward(10)
-
-
-def move_backwards():
-    tim.backward(10)
-
-
-def counter_clockwise():
-    tim.left(10)
-
-
-def clockwise():
-    tim.right(10)
-
-
-def clear():
-    tim.clear()
-    tim.penup()
-    tim.home()
-    tim.pendown()
-
-
-screen1.listen()
-screen1.onkeypress(key="w", fun=move_forwards)
-screen1.onkeypress(key="s", fun=move_backwards)
-screen1.onkeypress(key="a", fun=counter_clockwise)
-screen1.onkeypress(key="d", fun=clockwise)
-screen1.onkeypress(key="c", fun=clear)
-screen1.exitonclick()
+#
+# def move_forwards():
+#     tim.forward(10)
+#
+#
+# def move_backwards():
+#     tim.backward(10)
+#
+#
+# def counter_clockwise():
+#     tim.left(10)
+#
+#
+# def clockwise():
+#     tim.right(10)
+#
+#
+# def clear():
+#     tim.clear()
+#     tim.penup()
+#     tim.home()
+#     tim.pendown()
+#
+#
+# screen1.listen()
+# screen1.onkeypress(key="w", fun=move_forwards)
+# screen1.onkeypress(key="s", fun=move_backwards)
+# screen1.onkeypress(key="a", fun=counter_clockwise)
+# screen1.onkeypress(key="d", fun=clockwise)
+# screen1.onkeypress(key="c", fun=clear)
+# screen1.exitonclick()
 
 
 # Turtle Race
