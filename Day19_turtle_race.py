@@ -2,7 +2,7 @@ from turtle import Turtle, Screen
 import random
 
 tim = Turtle()
-screen1 = Screen() 
+screen1 = Screen()
 
 
 # Etch a Sketch
