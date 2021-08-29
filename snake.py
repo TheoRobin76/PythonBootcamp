@@ -60,7 +60,7 @@ class Food(Turtle):
         super().__init__()
         self.shape("turtle")
         self.penup()
-        self.shapesize(stretch_len=0.5, stretch_wid=0.5)
+        self.shapesize(stretch_len=0.8, stretch_wid=0.8)
         self.color("green")
         self.speed("fastest")
         self.refresh()
@@ -97,4 +97,13 @@ class Scoreboard(Turtle):
     def game_over(self):
         self.goto(0, 0)
         self.write("GAME OVER", align=ALIGNMENT, font=FONT)
+
+    def end_game(self):
+        self.clear()
+        self.goto(0, 270)
+        self.update_scoreboard()
+        self.goto(0, 0)
+        self.write("Thank you for playing snake", align=ALIGNMENT, font=FONT)
+
+
 
