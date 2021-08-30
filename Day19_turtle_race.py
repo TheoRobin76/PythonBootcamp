@@ -41,7 +41,7 @@ screen1 = Screen()
 
 # Turtle Race
 is_race_on = False
-screen2 = Screen() 
+screen2 = Screen()
 screen2.setup(width=500, height=400)
 user_bet = screen2.textinput(title="Make your bet", prompt="Which turtle will win the race? Enter a color:")
 colors = ["red", "orange", "yellow", "green", "blue", "purple"]
