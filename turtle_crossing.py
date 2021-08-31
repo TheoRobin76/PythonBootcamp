@@ -12,7 +12,7 @@ class CarManager:
         self.car_speed = STARTING_MOVE_DISTANCE
 
     def create_car(self):
-        random_chance = random.randint(1, 6)
+        random_chance = random.randint(1, 4)
         if random_chance == 1:
             new_car = Turtle("square")
             new_car.penup()
@@ -38,7 +38,7 @@ class Player(Turtle):
     def __init__(self):
         super().__init__()
         self.shape("turtle")
-        self.color("black")
+        self.color("white")
         self.penup()
         self.next_level()
         self.setheading(90)
@@ -56,7 +56,7 @@ FONT = ("Courier", 24, "normal")
 class Scoreboard(Turtle):
     def __init__(self):
         super().__init__()
-        self.color("black")
+        self.color("white")
         self.penup()
         self.hideturtle()
         self.level = 1

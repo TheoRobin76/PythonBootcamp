@@ -4,6 +4,7 @@ from turtle_crossing import CarManager, Player, Scoreboard, FINISH_LINE_Y
 
 screen = Screen()
 screen.setup(width=600, height=600)
+screen.bgcolor("black")
 screen.tracer(0)
 
 # instantiate the classes
