@@ -27,6 +27,13 @@ class Snake:
         segment.goto(position)
         self.segments.append(segment)
 
+    def reset(self):
+        for seg in self.segments:
+            seg.goto(1000, 1000)
+        self.segments.clear()
+        self.create_snake()
+        self.head = self.segments[0]
+
     def extend(self):
         self.add_segment(self.segments[-1].position())
 
@@ -80,6 +87,8 @@ class Scoreboard(Turtle):
     def __init__(self):
         super().__init__()
         self.score = 0
+        with open("snake_data.txt") as file:
+            self.high_score = int(file.read())
         self.penup()
         self.color("white")
         self.goto(0, 270)
@@ -87,23 +96,25 @@ class Scoreboard(Turtle):
         self.update_scoreboard()
 
     def update_scoreboard(self):
-        self.write(f"Score: {self.score}", align=ALIGNMENT, font=FONT)
+        self.clear()
+        self.write(f"Score: {self.score} High Score: {self.high_score}", align=ALIGNMENT, font=FONT)
 
     def increase_score(self):
         self.score += 1
-        self.clear()
+        if self.score > self.high_score:
+            self.high_score = self.score
+            self.save_high_score()
         self.update_scoreboard()
 
-    def game_over(self):
-        self.goto(0, 0)
-        self.write("GAME OVER", align=ALIGNMENT, font=FONT)
-
-    def end_game(self):
-        self.clear()
-        self.goto(0, 270)
+    def reset(self):
+        if self.score > self.high_score:
+            self.high_score = self.score
+            self.save_high_score()
+        self.score = 0
         self.update_scoreboard()
-        self.goto(0, 0)
-        self.write("Thank you for playing snake", align=ALIGNMENT, font=FONT)
 
+    def save_high_score(self):
+        with open("snake_data.txt", mode="w") as file:
+            file.write(f"{self.high_score}")
 
 
