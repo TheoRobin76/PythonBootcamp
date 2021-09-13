@@ -1,0 +1,2 @@
+Amazon | theo@email.com | password
+Facebook | theo@email.com | password123
